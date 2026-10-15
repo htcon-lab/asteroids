@@ -27,3 +27,8 @@ class CircleShape(pygame.sprite.Sprite):
         distance = self.position.distance_to(other.position)
         min_distance = self.radius + other.radius
         return distance <= min_distance
+
+    def stuck_with(self, other) -> bool:
+        distance = self.position.distance_to(other.position)
+        min_distance = self.radius + other.radius
+        return distance <= min_distance * 0.9

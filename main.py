@@ -51,6 +51,16 @@ def main() -> None:
                     shot.kill()
                     asteroid.split()
 
+        asteroid_list = list(asteroids)
+
+        for i, asteroid in enumerate(asteroid_list):
+            for other in asteroid_list[i + 1:]:
+                if asteroid.stuck_with(other):
+                    asteroid.merge_with(other)
+                if asteroid.collides_with(other):
+                    asteroid.collision(other)
+                    break
+
         screen.fill("black")
 
         for obj in drawable:
